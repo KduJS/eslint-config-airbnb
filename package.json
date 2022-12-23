@@ -1,6 +1,6 @@
 {
   "name": "@kdujs/eslint-config-airbnb",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "eslint-config-airbnb for Kdu CLI",
   "main": "index.js",
   "publishConfig": {
@@ -21,13 +21,25 @@
   },
   "homepage": "https://github.com/kdujs/eslint-config-airbnb#readme",
   "dependencies": {
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-import-resolver-webpack": "^0.11.1",
-    "eslint-plugin-import": "^2.18.2"
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-import-resolver-node": "^0.3.6",
+    "eslint-import-resolver-webpack": "^0.13.2",
+    "eslint-plugin-import": "^2.25.3"
   },
   "peerDependencies": {
-    "eslint": "^5.16.0 || ^6.1.0",
-    "eslint-plugin-import": "^2.18.2",
-    "@kdujs/cli-service": "^3.0.0 || ^4.0.0"
+    "@kdujs/cli-service": "^4.0.0 || ^5.0.0",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-kdujs-accessibility": "^1.1.0"
+  },
+  "peerDependenciesMeta": {
+    "@kdujs/cli-service": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@kdujs/cli-service": "^5.0.0",
+    "eslint": "^8.2.0",
+    "eslint-plugin-kdujsjs-accessibility": "^1.1.0"
   }
 }

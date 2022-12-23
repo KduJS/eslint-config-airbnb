@@ -1,20 +1,31 @@
+const importResolver = {
+  // https://github.com/benmosher/eslint-plugin-import/issues/1396
+  [require.resolve('eslint-import-resolver-node')]: {},
+};
+
+try {
+  const kduCliConfig = require.resolve('@kdujs/cli-service/webpack.config.js');
+  importResolver[require.resolve('eslint-import-resolver-webpack')] = {
+    config: kduCliConfig,
+  };
+} catch (e) {
+  // ignore
+}
+
 module.exports = {
   extends: [
-    require.resolve('eslint-config-airbnb-base')
+    'airbnb-base',
+    'plugin:kdujs-accessibility/recommended',
   ],
   settings: {
-    'import/resolver': {
-      webpack: {
-        config: require.resolve('@kdujs/cli-service/webpack.config.js')
-      }
-    },
+    'import/resolver': importResolver,
     'import/extensions': [
       '.js',
       '.jsx',
-      '.mjs',
+      '.mjs', // ?
       '.ts',
-      '.tsx'
-    ]
+      '.tsx',
+    ],
   },
   rules: {
     'import/extensions': ['error', 'always', {
@@ -22,15 +33,18 @@ module.exports = {
       mjs: 'never',
       jsx: 'never',
       ts: 'never',
-      tsx: 'never'
+      tsx: 'never',
     }],
+
+    'kdujs-accessibility/no-onchange': 'off',
+
     'no-param-reassign': ['error', {
       props: true,
       ignorePropertyModificationsFor: [
         'state', // for kdux state
         'acc', // for reduce accumulators
-        'e' // for e.returnvalue
-      ]
-    }]
-  }
-}
+        'e', // for e.returnvalue
+      ],
+    }],
+  },
+};
